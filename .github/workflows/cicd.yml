@@ -51,4 +51,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: user/app:latest
+        tags: rishabh1501/learn-cicd
