@@ -27,6 +27,16 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
+    - name: Build Artifact
+      uses: actions/upload-artifact@v4.2.0
+      with:
+        name: Build_Artifacts
+        path: |
+          ${{ github.workspace }}
+          !**/Common/**
+          !**/.github/**
+          !**/README.md
+
     # Uncomment the following steps if you need to use Conda
     # - name: Add conda to system path
     #   run: |
