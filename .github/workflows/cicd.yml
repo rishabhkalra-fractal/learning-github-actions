@@ -32,8 +32,8 @@ jobs:
           !**/.github/**
           !**/README.md
     
-    - name: Install Databricks-CLI
-      uses: microsoft/databricks-cli-install@v1.0.0
+    - name: install-databricks-cli
+      uses: microsoft/install-databricks-cli@v1.0.0
 
     - name: databricks-import-directory
       uses: microsoft/databricks-import-directory@v1.0.0
