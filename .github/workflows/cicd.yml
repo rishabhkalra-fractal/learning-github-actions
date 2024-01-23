@@ -48,4 +48,4 @@ jobs:
         databricks-host: "https://adb-3620630908047238.18.azuredatabricks.net"
         databricks-token: ${{ secrets.DB_TOKEN }} 
         local-path: "${{ github.workspace }}/artifacts"
-        remote-path: "Shared/output/"
+        remote-path: "/Shared/output/"
