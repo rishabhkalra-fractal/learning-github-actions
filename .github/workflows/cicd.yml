@@ -1,4 +1,4 @@
-name: Upload to Databricks using api
+name: Upload to Databricks using API
 
 on: 
   push:
@@ -9,9 +9,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        # os: [ubuntu-latest, macos-latest, windows-latest]
         os: ["ubuntu-latest"]
-        # python-version: ["3.10", "3.11", "3.12"]
         python-version: ["3.10"]
     environment:
       name: dev
@@ -35,12 +33,12 @@ jobs:
           !**/README.md
     
     - name: Install Databricks-CLI
-      uses: microsoft/databricks-cli-install 
+      uses: microsoft/databricks-cli-install@v1.0.0
 
     - name: databricks-import-directory
       uses: microsoft/databricks-import-directory@v1.0.0
       with:
         databricks-host: https://adb-3620630908047238.18.azuredatabricks.net
         databricks-token: ${{ secrets.DB_TOKEN }} 
-        local-path: "{{ github.workspace }}/"
+        local-path: ${{ github.workspace }}
         remote-path: "/"
