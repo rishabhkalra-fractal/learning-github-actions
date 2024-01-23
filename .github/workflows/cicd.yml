@@ -36,7 +36,7 @@ jobs:
       uses: microsoft/install-databricks-cli@v1.0.0
 
     - name: databricks-import-directory
-      uses: microsoft/databricks-import-directory@v1.0.0
+      uses: microsoft/databricks-import-notebook@v1.0.0      
       with:
         databricks-host: https://adb-3620630908047238.18.azuredatabricks.net
         databricks-token: ${{ secrets.DB_TOKEN }} 
