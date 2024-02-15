@@ -42,10 +42,20 @@ jobs:
     - name: install-databricks-cli
       uses: microsoft/install-databricks-cli@v1.0.0
 
+    # - name: databricks-import-directory
+    #   uses: microsoft/databricks-import-notebook@v1.0.0      
+    #   with:
+    #     databricks-host: "https://adb-3620630908047238.18.azuredatabricks.net"
+    #     databricks-token: ${{ secrets.DB_TOKEN }} 
+    #     local-path: "${{ github.workspace }}/artifacts"
+    #     remote-path: "/Shared/output/"
+
     - name: databricks-import-directory
-      uses: microsoft/databricks-import-notebook@v1.0.0      
-      with:
-        databricks-host: "https://adb-3620630908047238.18.azuredatabricks.net"
-        databricks-token: ${{ secrets.DB_TOKEN }} 
-        local-path: "${{ github.workspace }}/artifacts"
-        remote-path: "/Shared/output/"
+      run: |
+        databricks workspace import-dir --overwrite "${LOCAL_NOTEBOOKS_PATH}" "${REMOTE_NOTEBOOK_PATH}" --debug
+
+        env:
+          DATABRICKS_HOST: "https://adb-3620630908047238.18.azuredatabricks.net"
+          DATABRICKS_TOKEN: ${{ secrets.DB_TOKEN }}
+          LOCAL_NOTEBOOKS_PATH: "${{ github.workspace }}/artifacts"
+          REMOTE_NOTEBOOK_PATH: "/Shared/output/"
